@@ -1,0 +1,8 @@
+
+A simple URL shortner built using Perl, Mojolicious, SQLite and Tailwind CSS.
+
+## Installing:
+
+```bash
+cpanm --installdeps .
+```
