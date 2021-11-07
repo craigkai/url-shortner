@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head><title><%= title %></title></head>
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <body><%= content %></body>
-  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+  %= stylesheet 'tailwind.min.css'
+  <body>
+    <ul class="flex">
+      <li class="mr-6">
+        <a class="text-blue-500 hover:text-blue-800" href="/">Home</a>
+      </li>
+    </ul>
+    <%= content %>
+  </body>
+  %= javascript 'clipboard.min.js'
   %= javascript 'main.js'
 </html>

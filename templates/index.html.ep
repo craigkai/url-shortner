@@ -3,9 +3,6 @@
 
 <div class="flex justify-center items-center h-screen">
   <div class="w-1/2  max-w-xs">
-    <div>
-      Welcome to Craigs URL Shortner!
-    </div>
 
     <% if ( stash "msg" ) { %>
       <div class="flex items-center border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700" role="alert">
