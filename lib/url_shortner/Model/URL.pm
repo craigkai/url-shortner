@@ -12,19 +12,13 @@ has original => ( is => 'rw' );
 
 =head2 Create C<URL>
 
-Create a new shortened URL. Adds to database then returns a tuple:
-
-[ret, msg]
-
-If success then you can access new values via the object.
+Create a new shortened URL. If success then you can access new values via the object.
 
 =cut
 
 sub Create {
   my $self  = shift;
   my $value = shift;
-
-my $all = $self->db->query('select * from urls')->hashes;
 
   # If our URL is already in db, just return the existing link
   my $exists = $self->LoadFromOriginal( $value );
@@ -45,7 +39,7 @@ my $all = $self->db->query('select * from urls')->hashes;
       shortened => $new
     })->last_insert_id;
   unless ( $ret ) {
-    print "Could not create new URL entry\n";
+    return (0, "Could not create new URL entry");
   }
 
   $self->original( $value );

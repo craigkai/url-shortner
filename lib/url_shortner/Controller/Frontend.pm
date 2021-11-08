@@ -9,10 +9,11 @@ sub index {
   $self->render('index');
 }
 
-=head2 new
+=head2 url
 
-Creates a new shortened URL in the DB and returns the new
-URL string.
+Controller for submitting a new URL to be shortened.
+
+On success render the 'new' template with the short URL.
 
 =cut
 
@@ -29,9 +30,22 @@ sub url {
 
   my $url_obj = url_shortner::Model::URL->new();
   my ($ret, $msg) = $url_obj->Create($value);
+  unless ( $ret ) {
+    print "Failed to create shortened URL for $value\n";
+    return $c->render('index', msg => "Failed to create shortened URL");
+  }
 
   $c->render('new', url => $url_obj->shortened);
 }
+
+=head2 Shortened
+
+Controller for loading the expanded URL from the shortened URL.
+
+On success, redirects to the original URL. On failure redirects home with
+a generic error message.
+
+=cut
 
 sub shortened {
   my $c = shift;
@@ -44,6 +58,7 @@ sub shortened {
     $c->redirect_to( $url_expanded );
   }
   else {
+    print "Could not load $url from db\n";
     $c->render('index', msg => "URL not found");
   }
 }
