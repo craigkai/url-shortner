@@ -31,7 +31,7 @@ hypnotoad script/url_shortner
 
 Things to improve:
 
-[ ] Add collision detection, its unlikely but possible
-[ ] Add better logging debug/warning/error
-[ ] Add additional testing
-[ ] Implement the database connection in a cleaner way
+- [ ] Add collision detection, its unlikely but possible
+- [ ] Add better logging debug/warning/error
+- [ ] Add additional testing
+- [ ] Implement the database connection in a cleaner way
