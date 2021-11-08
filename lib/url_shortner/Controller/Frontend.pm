@@ -30,7 +30,7 @@ sub url {
   my $url_obj = url_shortner::Model::URL->new();
   my ($ret, $msg) = $url_obj->Create($value);
 
-  $c->render('new', url => $url_obj->content);
+  $c->render('new', url => $url_obj->shortened);
 }
 
 sub shortened {

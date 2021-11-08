@@ -12,9 +12,8 @@ sub startup {
   # Configure the application
   $self->secrets($config->{secrets});
 
-
   # Create our db:
-  url_shortner::Schema->Create();
+  url_shortner::Schema->Create(test => $config->{test_mode});
 
   # Router
   my $r = $self->routes;

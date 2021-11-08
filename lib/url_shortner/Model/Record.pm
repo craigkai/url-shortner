@@ -6,14 +6,19 @@ use strictures 2;
 
 use url_shortner::Schema;
 
+=head1
+
+INFO: By using the build_handle we can allow different values
+to be passed in for our DB handler and connection.
+
+=cut
+
 has handle => ( is => 'lazy' );
-# Allow handle to be passed in the constuctor for Dependency Inversion:
 sub _build_handle {
   return $url_shortner::Schema::handle;
 }
 
 has db => ( is => 'lazy' );
-# Allow handle to be passed in the constuctor for Dependency Inversion:
 sub _build_db {
   return $url_shortner::Schema::db;
 }
